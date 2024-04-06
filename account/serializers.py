@@ -112,7 +112,6 @@ class UserPasswordResetSerialize(serializers.Serializer):
             raise ValidationErr("Token is not valid or expired")
 
 
-
          
 
    
