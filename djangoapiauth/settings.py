@@ -1,5 +1,8 @@
+#  We are leaving the email sending part for the security concern complete it in future 
+
 from pathlib import Path
 from datetime import timedelta
+import os
 
 from django.conf import settings
 
@@ -127,6 +130,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'account.User'
 
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER ')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_USER ')
+EMAIL_USE_TLS = True
+
 #Simple JWT setting
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=20),
@@ -145,6 +155,8 @@ SIMPLE_JWT = {
 
 
 }
+
+PASSWORD_RESET_TIMEOUT = 900
 
 
 CORS_ALLOWED_ORIGINS = [
